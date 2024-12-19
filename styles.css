@@ -1,0 +1,132 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.head p {
+    color: #3d3d3d;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.mmain {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    background-color: #2c3e50;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.layer1 {
+    display: flex;
+    margin-bottom: 15px;
+    
+}
+
+.layer1 .screen {
+    width: 75%;
+}
+
+
+
+#search {
+text-align: center; 
+line-height: 40px; 
+font-size: 16px;
+padding: 0; 
+box-sizing: border-box; 
+}
+
+
+.layer1 .clear {
+    width: 20%;
+    margin-left: 9px;
+}
+
+.screen input {
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    text-align: right;
+    padding: 0 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+button {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn1, .btn2, .btn3 {
+    width: 23%;
+    margin-right: 2%;
+    background-color: #3498db;
+    color: white;
+}
+
+.btn4 {
+    width: 23%;
+    background-color: #f39c12;
+    color: white;
+}
+
+.layer4 .btn3 {
+    background-color: #2ecc71;
+}
+
+.layer2, .layer3, .layer4 {
+    display: flex;
+    margin-top: 15px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.clear button:hover {
+    background-color: #c0392b;
+}
+
+.btn1:hover, .btn2:hover, .btn3:hover {
+    background-color: #2980b9;
+}
+
+.btn4:hover {
+    background-color: #d35400;
+}
+
+.layer4 .btn3:hover {
+    background-color: #27ae60;
+}
