@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5+Charted&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .head p {
+            color: #3d3d3d;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .mmain {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            background-color: #2c3e50;
+            width: 100%;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .layer1 {
+            display: flex;
+            margin-bottom: 15px;
+            
+        }
+
+        .layer1 .screen {
+            width: 75%;
+        }
+
+        
+
+    #search {
+        text-align: center; 
+        line-height: 40px; 
+        font-size: 16px;
+        padding: 0; 
+        box-sizing: border-box; 
+    }
+
+
+        .layer1 .clear {
+            width: 20%;
+            margin-left: 9px;
+        }
+
+        .screen input {
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            text-align: right;
+            padding: 0 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        button {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear button {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn1, .btn2, .btn3 {
+            width: 23%;
+            margin-right: 2%;
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn4 {
+            width: 23%;
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .layer4 .btn3 {
+            background-color: #2ecc71;
+        }
+
+        .layer2, .layer3, .layer4 {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .clear button:hover {
+            background-color: #c0392b;
+        }
+
+        .btn1:hover, .btn2:hover, .btn3:hover {
+            background-color: #2980b9;
+        }
+
+        .btn4:hover {
+            background-color: #d35400;
+        }
+
+        .layer4 .btn3:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <p>Calcy</p>
+    </div>
+    <div class="mmain">
+        <div class="main">
+            <div class="layer1">
+                <div class="screen">
+                    <input type="text" name="search" id="search" placeholder="Enter numbers" readonly>
+                </div>
+                <div class="clear">
+                    <button>C</button>
+                </div>
+            </div>
+            <div class="layer2">
+                <button class="btn1">1</button>
+                <button class="btn2">2</button>
+                <button class="btn3">3</button>
+                <button class="btn4">/</button>
+            </div>
+            <div class="layer3">
+                <button class="btn1">4</button>
+                <button class="btn2">5</button>
+                <button class="btn3">6</button>
+                <button class="btn4">-</button>
+            </div>
+            <div class="layer3">
+                <button class="btn1">7</button>
+                <button class="btn2">8</button>
+                <button class="btn3">9</button>
+                <button class="btn4">+</button>
+            </div>
+            <div class="layer4">
+                <button class="btn1">.</button>
+                <button class="btn2">0</button>
+                <button class="btn3">=</button>
+                <button class="btn4">*</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    function add(a, b) {
+        return a + b;
+    }
+
+    function subtract(a, b) {
+        return a - b;
+    }
+
+    function multiply(a, b) {
+        return a * b;
+    }
+
+    function divide(a, b) {
+        if (b === 0) {
+            return 'Infinity...';
+        }
+        return a / b;
+    }
+
+    
+    const inputField = document.getElementById('search');
+    const buttons = document.querySelectorAll('button');
+
+    let firstOperand = '';
+    let operator = '';
+    let secondOperand = '';
+
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.innerText;
+
+            if (buttonText === 'C') {
+                
+                inputField.value = '';
+                currentOperation = '';
+                firstOperand = '';
+                operator = '';
+                secondOperand = '';
+            } else if (buttonText === '=') {
+                
+                if (firstOperand !== '' && operator !== '' && secondOperand !== '') {
+                    let result;
+                    switch (operator) {
+                        case '+':
+                            result = add(parseFloat(firstOperand), parseFloat(secondOperand));
+                            break;
+                        case '-':
+                            result = subtract(parseFloat(firstOperand), parseFloat(secondOperand));
+                            break;
+                        case '*':
+                            result = multiply(parseFloat(firstOperand), parseFloat(secondOperand));
+                            break;
+                        case '/':
+                            result = divide(parseFloat(firstOperand), parseFloat(secondOperand));
+                            break;
+                        default:
+                            result = 'Error';
+                            break;
+                    }
+                    inputField.value = result.toString();
+                    
+                    firstOperand = result.toString();
+                    operator = '';
+                    secondOperand = '';
+                }
+            } else if (buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/') {
+                
+                operator = buttonText;
+                
+                firstOperand = inputField.value.trim();
+                currentOperation = `${firstOperand} ${operator}`;
+                inputField.value = '';
+            } else {
+                
+                inputField.value += buttonText;
+                if (operator !== '') {
+                    secondOperand = inputField.value.trim();
+                    currentOperation = `${firstOperand} ${operator} ${secondOperand}`;
+                    inputField.value = '';
+                    
+                 }
+            }
+            inputField.placeholder = currentOperation || inputField.value;
+        });
+    });
+</script>
+
+
+
+</html>
